@@ -5,10 +5,6 @@
  */
 package hibernatexml;
 
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import pojo.UserData;
-
 /**
  *
  * @author Mohammmed Sami
@@ -20,23 +16,8 @@ public class HibernateXML {
      */
     public static void main(String[] args) {
         
-        Session session = NewHibernateUtil.getSessionFactory().openSession();
-        
-        UserData userData = new UserData();
-        userData.setAge(23);
-        userData.setUserName("Mohammed Sami");
-        try{
-            
-            session.beginTransaction();
-            session.save(userData);
-            session.getTransaction().commit();
-        }catch(HibernateException h ){
-            h.printStackTrace();
-            session.getTransaction().rollback();
-            
-        }finally{
-            session.close();
-        }
+        HibernateCrud crud = new HibernateCrud();
+        crud.insertEmployee();
         
         
     }

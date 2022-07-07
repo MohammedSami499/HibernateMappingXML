@@ -49,5 +49,28 @@ Contributor(s):
         <property name="age" type="int" column="age" length="20" unique="false" not-null="false" />
 
     </class>
+    
+    <class name="pojo.Employee" table="Emp" >
+        
+        <id name="id" column="emp_pk" length="10" type="int">
+            <generator class="increment" />
+        </id>
+        
+        <property name="name" column="emp_name" type="string" length="15" />
+        
+        <component class="pojo.Address" name="ad">
+            <property name="city" column="home_city" type="string" />
+            <property name="street" column="home_street" type="string" />
+            <property name="state" column="home_state" type="string" />
+        </component>
+        
+        <component class="pojo.Address" name="workAd">
+            <property name="city" column="work_city" type="string" />
+            <property name="street" column="work_street" type="string" />
+            <property name="state" column="work_state" type="string" />
+        </component>
+        
+    </class>
+    
   
 </hibernate-mapping>
